@@ -6,11 +6,12 @@
     <title>BriPocker</title>
     <link rel="stylesheet" href="public/assets/style.css">
     <link rel="stylesheet" href="public/assets/reset.css">
+    <link rel="stylesheet" href="public/assets/404.css">
 </head>
 <body>
     <main>
         <h1>404</h1>
-        <p>Заблудился?</p>
+        <p>Кажется, тебе <a href="pocker_planing/lobby">сюда</a>.</p>
     </main>
 </body>
 </html>

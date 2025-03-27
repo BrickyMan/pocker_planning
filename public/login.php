@@ -11,11 +11,14 @@
 <body>
     <header>
         <p class="logo">BriPocker</p>
+        <form action="logic/clear_session.php" method="post">
+            <input type="submit" value="Выход">
+        </form>
     </header>
     <main>
-        <form class="auth-wrapper" action="logic/auth.php" method="post">
+        <form class="auth-wrapper" action="logic/login.php" method="post">
             <label for="">Придумайте имя</label>
-            <input type="text" name="username" placeholder="Василий Иваныч">
+            <input type="text" name="username" placeholder="Начните вводить...">
             <input type="submit" value="Применить">
         </form>
     </main>

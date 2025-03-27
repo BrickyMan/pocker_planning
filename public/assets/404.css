@@ -1,0 +1,28 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
+}
+
+main h1 {
+    font-size: 8rem;
+    font-weight: 800;
+    color: var(--accent-color);
+}
+
+main p {
+    font-size: 1.5rem;
+}
+
+main a {
+    color: var(--tertiary-color); 
+    transition: all 0.2s ease;
+}
+
+main a:hover {
+    color: var(--accent-color);
+}

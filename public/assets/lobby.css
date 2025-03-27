@@ -1,14 +1,44 @@
 header {
+    width: 100%;
     height: 70px;
     padding: 0 40px;
     position: absolute;
     font-size: 2rem;
     font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header p.logo {
     font-size: 2rem;
     font-weight: 700;
+}
+
+header .username-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+}   
+
+header .username-wrapper p {
+    font-size: 1.2rem;
+    padding-right: 30px;
+}
+
+header .username-wrapper a {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    position: absolute;
+    right: -5px;
+    bottom: -3px;
+    transition: all 0.2s ease;
+}
+
+header .username-wrapper a:hover {
+    opacity: 1;
 }
 
 main {
@@ -17,6 +47,10 @@ main {
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.error-msg {
+    color: var(--red-accent-color);
 }
 
 .lobby-divider {

@@ -1,5 +1,5 @@
 const rateBar = document.getElementById("rateBar");
-const rateBtns = rateBar.querySelectorAll("#rateBar button");
+const rateBtns = rateBar.querySelectorAll(".rate-bar_btn");
 const result = document.querySelector(".result-wrapper h2 span");
 const actionCardBtn = document.getElementById("actionCardBtn");
 const currentUserCard = document.querySelector(".user-card.current-user");

@@ -1,9 +1,21 @@
 <?php
+require 'db.php';
+
 $basepath = "pocker_planing";
-$uri = trim(str_replace($basepath, '', $_SERVER['REQUEST_URI']), '/'); // Убираем начальный и конечный слеш
+
+// Маршрут, его очистка от стандартной директории и слэшей
+$path = trim(
+    str_replace(
+        $basepath, '', parse_url(
+            $_SERVER['REQUEST_URI'], PHP_URL_PATH
+        )
+    ),
+'/');
+
+
 
 // Роутинг
-switch ($uri) {
+switch ($path) {
     case '':
         require 'public/login.php';
         break;
