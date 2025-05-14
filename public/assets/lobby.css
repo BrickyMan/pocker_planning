@@ -6,13 +6,16 @@ header {
     font-size: 2rem;
     font-weight: 400;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: space-between;
 }
 
 header p.logo {
     font-size: 2rem;
     font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 header .username-wrapper {

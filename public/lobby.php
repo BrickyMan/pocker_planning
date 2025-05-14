@@ -43,7 +43,7 @@ if (!isset($_SESSION['username'])) {
             <input type="submit" value="Создать">
         </form>
         <div class="lobby-divider"></div>
-        <form class="lobby-side" action="process.php" method="post">
+        <form class="lobby-side" action="logic/join_room.php" method="post">
             <?php if (isset($params['error']) && isset($error_messages[$params['error']])): ?>
                 <p class="error-msg"><?php echo $error_messages[$params['error']] ?></p>
             <?php endif; ?>

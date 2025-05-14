@@ -18,7 +18,7 @@ try {
 function createRoom($ownerSession) {    
     global $pdo;
     // Генерация случайного кода
-    $roomCode = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 5);
+    $roomCode = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 2).substr(str_shuffle("0123456789"), 0, 2);
     // Подготовка SQL-запроса для добавления комнаты
     $stmt = $pdo->prepare("INSERT INTO rooms (room_code, owner_session) VALUES (?, ?)");
     // Выполнение запроса с передачей парметров
@@ -32,6 +32,14 @@ function getRoomByCode($roomCode) {
     $stmt = $pdo->prepare("SELECT * FROM rooms WHERE room_code = ?");
     $stmt->execute([$roomCode]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// 
+function roomExists($roomCode) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM rooms WHERE room_code = ?");
+    $stmt->execute([$roomCode]);
+    return $stmt->rowCount() > 0;
 }
 
 // Функция для добавления пользователя в комнату
@@ -54,10 +62,66 @@ function addUserToRoom($sessionId, $roomId, $username) {
     }
 }
 
+// 
+function removeUserFromRoom($sessionId) {
+    global $pdo;
+    $stmt = $pdo->prepare("DELETE FROM users WHERE session_id = ?");
+    $stmt->execute([$sessionId]);
+}
+
 // Функция для получения списка пользователей в комнате
 function getUsersInRoom($roomId) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM users WHERE room_id = ?");
     $stmt->execute([$roomId]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Функция для получения данных пользователя
+function getUserData($sessionId) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE session_id = ?");
+    $stmt->execute([$sessionId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Запись голоса пользователя
+function userVoted($sessionId, $vote) {
+    global $pdo;
+    echo "db test, vote: $vote";
+    $stmt = $pdo->prepare("UPDATE users SET vote = ? WHERE session_id = ?");
+    $stmt->execute([$vote, $sessionId]);
+}
+
+function resetVotes($roomId) {
+    global $pdo;
+    $stmt = $pdo->prepare("UPDATE users SET vote = NULL where room_id = ?");
+    $stmt->execute([$roomId]);
+}
+
+function getRoomData($roomId) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM rooms WHERE id = ?");
+    $stmt->execute([$roomId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function isRoomShowdown($roomId) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT is_showdown FROM rooms WHERE id = ?");
+    $stmt->execute([$roomId]);
+    return $stmt->fetchColumn();
+}
+
+function toggleRoomShowdown($roomId, $value) {
+    global $pdo;
+    $stmt = $pdo->prepare("UPDATE rooms SET is_showdown = ? WHERE id = ?");
+    $stmt->execute([$value, $roomId]);
+}
+
+function getAvergeVote($roomId) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT AVG(vote) FROM users WHERE room_id = ? AND vote != 0");
+    $stmt->execute([$roomId]);
+    return $stmt->fetchColumn();
 }

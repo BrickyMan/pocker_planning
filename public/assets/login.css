@@ -12,6 +12,9 @@ header {
 header p.logo {
     font-size: 2rem;
     font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 main {
