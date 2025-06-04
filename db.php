@@ -34,7 +34,7 @@ function getRoomByCode($roomCode) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// 
+// Функция для проверки существования комнаты 
 function roomExists($roomCode) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM rooms WHERE room_code = ?");
@@ -62,7 +62,7 @@ function addUserToRoom($sessionId, $roomId, $username) {
     }
 }
 
-// 
+// Функция для удаления пользователя из комнаты
 function removeUserFromRoom($sessionId) {
     global $pdo;
     $stmt = $pdo->prepare("DELETE FROM users WHERE session_id = ?");
@@ -93,12 +93,14 @@ function userVoted($sessionId, $vote) {
     $stmt->execute([$vote, $sessionId]);
 }
 
+// Сброс голосов
 function resetVotes($roomId) {
     global $pdo;
     $stmt = $pdo->prepare("UPDATE users SET vote = NULL where room_id = ?");
     $stmt->execute([$roomId]);
 }
 
+// Функция для получения данных комнаты
 function getRoomData($roomId) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM rooms WHERE id = ?");
@@ -106,6 +108,7 @@ function getRoomData($roomId) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// Функция для проверки статуса вскрытия карт в комнате
 function isRoomShowdown($roomId) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT is_showdown FROM rooms WHERE id = ?");
@@ -113,12 +116,14 @@ function isRoomShowdown($roomId) {
     return $stmt->fetchColumn();
 }
 
+// Функция для изменения статуса вскрытия карт в комнате
 function toggleRoomShowdown($roomId, $value) {
     global $pdo;
     $stmt = $pdo->prepare("UPDATE rooms SET is_showdown = ? WHERE id = ?");
     $stmt->execute([$value, $roomId]);
 }
 
+// Функция для получения среднего голоса
 function getAvergeVote($roomId) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT AVG(vote) FROM users WHERE room_id = ? AND vote != 0");

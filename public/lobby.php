@@ -15,6 +15,7 @@ if (!isset($_SESSION['username'])) {
     header("Location: /pocker_planing/login");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BriPocker</title>
+    <title>BriPocker - Лобби</title>
     <link rel="stylesheet" href="public/assets/style.css">
     <link rel="stylesheet" href="public/assets/reset.css">
     <link rel="stylesheet" href="public/assets/lobby.css">

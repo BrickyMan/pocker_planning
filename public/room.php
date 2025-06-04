@@ -14,6 +14,7 @@ $roomData = getRoomByCode($roomCode);
 
 // Валидация комнаты
 if (!isset($_SESSION['username'])) {
+    $_SESSION['redirect_after_username'] = $_SERVER['REQUEST_URI'];
     header("Location: $basepath/login");
     exit();
 }

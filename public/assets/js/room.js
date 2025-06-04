@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://192.168.0.17:8080");
+const socket = new WebSocket("ws://192.168.0.14:8080");
 const userList = document.querySelector('.user-card-list');
 const rateBar = document.getElementById("rateBar");
 const rateBtns = rateBar.querySelectorAll(".rate-bar_btn");
@@ -235,6 +235,12 @@ function showdown(users, avergeVote) {
     // Обновление кнопки действия
     actionCardBtn.setAttribute("data-status", "restart");
     actionCardBtn.innerText = "Заново";
+    // Временное блокирование кнопки
+    actionCardBtn.setAttribute("disabled", "true");
+    setTimeout(() => {
+        actionCardBtn.removeAttribute("disabled");
+    }, 3000);
+    // Блокирование панели выбора голоса
     rateBar.setAttribute("blocked", "true");
     // Отображение среднего голоса
     showAvergeVote(avergeVote);
@@ -261,6 +267,11 @@ function restart(users) {
     // Обновление кнопки действия
     actionCardBtn.setAttribute("data-status", "showdown");
     actionCardBtn.innerText = "Вскрываемся!";
+    // Временное блокирование кнопки
+    actionCardBtn.setAttribute("disabled", "true");
+    setTimeout(() => {
+        actionCardBtn.removeAttribute("disabled");
+    }, 3000);
     // Сброс выбранного голоса
     resetChoice();
     rateBar.setAttribute("blocked", "false");
