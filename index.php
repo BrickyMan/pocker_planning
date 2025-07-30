@@ -3,15 +3,8 @@ require 'db.php';
 
 $basepath = "pocker_planing";
 
-// Маршрут, его очистка от стандартной директории и слэшей
-$path = trim(
-    str_replace(
-        $basepath, '', parse_url(
-            $_SERVER['REQUEST_URI'], PHP_URL_PATH
-        )
-    ),
-'/');
-
+// Маршрут, его очистка от и слэшей
+$path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
 
 // Роутинг

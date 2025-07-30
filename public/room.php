@@ -2,7 +2,7 @@
 require_once 'db.php';
 session_start();
 
-$basepath = "/pocker_planing";
+$basepath = "";
 
 // Параметры
 parse_str($_SERVER['QUERY_STRING'], $params);
@@ -51,7 +51,7 @@ $currentUser = getUserData(session_id());
 </head>
 <body>
     <header>
-        <a class="back-to-lobby" href="/pocker_planing/lobby">
+        <a class="back-to-lobby" href="/lobby">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
             В лобби
         </a>

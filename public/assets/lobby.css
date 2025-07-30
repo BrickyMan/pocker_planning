@@ -91,8 +91,10 @@ main {
     border: none;
     font-weight: 700;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .lobby-side input[type="submit"]:hover {
-    background-color: var(--tertiary-color);
+    background-color: var(--accent-color);
+    color: var(--dark-primary-color);
 }

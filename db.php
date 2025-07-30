@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';  // Или 127.0.0.1
 $dbname = 'pocker_planning';
-$username = 'root';  // Укажи свой логин
-$password = '';  // Если XAMPP, пароль пустой, иначе свой
+$username = 'root';
+$password = '';
 
 try {
     // Установка соединения

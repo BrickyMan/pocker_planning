@@ -1,7 +1,8 @@
 <?php
 session_start();
+$basepath = "";
 
 $roomKey = $_POST['room-key'];
-header("Location: /pocker_planing/room?code=$roomKey");
+header("Location: $basepath/room?code=$roomKey");
 exit();
 ?>

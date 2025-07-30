@@ -1,5 +1,4 @@
 <?php 
-$basepath = "/pocker_planing";
 
 // Обработка формы
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -24,12 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
         else {
-            header("Location: $basepath/lobby");
+            header("Location: /lobby");
             exit();
         }
     }
 }
 
-header("Location: $basepath/login");
+header("Location: /login");
 exit();
 ?>  

@@ -11,7 +11,7 @@
 <body>
     <main>
         <h1>404</h1>
-        <p>Кажется, тебе <a href="pocker_planing/lobby">сюда</a>.</p>
+        <p>Кажется, тебе <a href="/lobby">сюда</a>.</p>
     </main>
 </body>
 </html>

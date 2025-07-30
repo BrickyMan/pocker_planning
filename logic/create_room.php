@@ -2,7 +2,7 @@
 require '../db.php';
 
 session_start();
-$basepath = "/pocker_planing";
+$basepath = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Создание комнаты
