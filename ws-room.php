@@ -47,7 +47,7 @@ class RoomServer implements MessageComponentInterface {
                 'showdown' => isRoomShowdown($roomId),
                 'avergeVote' => getAvergeVote($roomId)
             ]);
-            echo "User $from->resourceId joined room $roomId\n";
+            // echo "User $from->resourceId joined room $roomId\n";
         }
 
         // Если это сообщение о выходе из комнаты
@@ -60,7 +60,7 @@ class RoomServer implements MessageComponentInterface {
             unset($this->rooms[$roomId][$from->resourseId]);
             removeUserFromRoom($userId);
 
-            echo "User $userId left room $roomId\n";
+            // echo "User $userId left room $roomId\n";
 
             // Рассылаем обновлённый список пользователей в комнате всем клиентам
             $this->sendToRoom($roomId, [
@@ -74,7 +74,7 @@ class RoomServer implements MessageComponentInterface {
             $roomId = $data['room_id'];
             $userId = $data['user_id'];
             $vote = $data['vote'];
-            echo "Data from client: ".json_encode($data)."\nClient vote: $vote\n";
+            // echo "Data from client: ".json_encode($data)."\nClient vote: $vote\n";
 
             // Обновляем голос пользователя в БД
             userVoted($userId, $vote);

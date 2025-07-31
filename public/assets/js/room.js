@@ -239,7 +239,7 @@ function showdown(users, avergeVote) {
     actionCardBtn.setAttribute("disabled", "true");
     setTimeout(() => {
         actionCardBtn.removeAttribute("disabled");
-    }, 3000);
+    }, 1000);
     // Блокирование панели выбора голоса
     rateBar.setAttribute("blocked", "true");
     // Отображение среднего голоса
@@ -271,7 +271,7 @@ function restart(users) {
     actionCardBtn.setAttribute("disabled", "true");
     setTimeout(() => {
         actionCardBtn.removeAttribute("disabled");
-    }, 3000);
+    }, 1000);
     // Сброс выбранного голоса
     resetChoice();
     rateBar.setAttribute("blocked", "false");

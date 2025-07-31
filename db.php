@@ -90,7 +90,6 @@ function getUserData($sessionId) {
 // Запись голоса пользователя
 function userVoted($sessionId, $vote) {
     global $pdo;
-    echo "db test, vote: $vote";
     $stmt = $pdo->prepare("UPDATE users SET vote = ? WHERE session_id = ?");
     $stmt->execute([$vote, $sessionId]);
 }
@@ -98,7 +97,7 @@ function userVoted($sessionId, $vote) {
 // Сброс голосов
 function resetVotes($roomId) {
     global $pdo;
-    $stmt = $pdo->prepare("UPDATE users SET vote = NULL where room_id = ?");
+    $stmt = $pdo->prepare("UPDATE users SET vote = 0 where room_id = ?");
     $stmt->execute([$roomId]);
 }
 
