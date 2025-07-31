@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://192.168.0.14:8080");
+const socket = new WebSocket(`ws://${serv_ip}:8080`);
 const userList = document.querySelector('.user-card-list');
 const rateBar = document.getElementById("rateBar");
 const rateBtns = rateBar.querySelectorAll(".rate-bar_btn");

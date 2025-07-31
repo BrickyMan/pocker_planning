@@ -2,6 +2,8 @@
 require_once 'db.php';
 session_start();
 
+$env = parse_ini_file(__DIR__ . '/../.env');
+
 $basepath = "";
 
 // Параметры
@@ -43,6 +45,7 @@ $currentUser = getUserData(session_id());
     <link rel="stylesheet" href="public/assets/reset.css">
     <link rel="stylesheet" href="public/assets/room.css">
     <script>
+        const serv_ip = "<?php echo $env["SERV_IP"]; ?>";
         const roomCode = "<?php echo $roomCode; ?>";
         const roomId = "<?php echo $roomData["id"]; ?>";
         const userData = <?php echo json_encode($currentUser); ?>;
