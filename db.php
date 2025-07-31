@@ -1,8 +1,10 @@
 <?php
-$host = 'localhost';  // Или 127.0.0.1
-$dbname = 'pocker_planning';
-$username = 'root';
-$password = '';
+$env = parse_ini_file(__DIR__ . '/.env');
+
+$host = $env['DB_HOST'];
+$dbname = $env['DB_NAME'];
+$username = $env['DB_USER'];
+$password = $env['DB_PASSWORD'] ?? '';
 
 try {
     // Установка соединения
