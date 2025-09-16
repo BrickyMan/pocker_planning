@@ -15,5 +15,4 @@ copyRoomCodeBtn.addEventListener("click", () => {
     setTimeout(() => {
         inviteMsg.style.display = "none";
     }, 2000);
-    // document.onfocus();
 });
