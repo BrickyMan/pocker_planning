@@ -45,7 +45,7 @@ $currentUser = getUserData(session_id());
     <link rel="stylesheet" href="public/assets/reset.css">
     <link rel="stylesheet" href="public/assets/room.css">
     <script>
-        const serv_ip = "<?php echo $env["SERV_IP"]; ?>";
+        const serv_host = "<?php echo $env["SERV_HOST"]; ?>";
         const roomCode = "<?php echo $roomCode; ?>";
         const roomId = "<?php echo $roomData["id"]; ?>";
         const userData = <?php echo json_encode($currentUser); ?>;
