@@ -163,7 +163,7 @@ $server = IoServer::factory(
         new WsServer(
             new RoomServer()
         )
-    ), 8080, '0.0.0.0'
+    ), 8080, '127.0.0.1'
 );
 
 // Запускаем вебсокет-сервер
