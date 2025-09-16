@@ -81,9 +81,14 @@ main {
     font-size: 1.1rem;
     text-align: center;
     border-radius: 5px;
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--secondary-color);
     background-color: var(--primary-color);
     outline: none;
+    transition: all 0.2s ease;
+}
+
+.lobby-side input:focus {
+    border: 1px solid var(--accent-color);
 }
 
 .lobby-side input[type="submit"] {

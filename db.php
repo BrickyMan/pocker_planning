@@ -55,7 +55,7 @@ function addUserToRoom($sessionId, $roomId, $username) {
 
     if ($user) {
         // Если пользователь уже есть, обновляем его имя
-        $stmt = $pdo->prepare("UPDATE users SET username = ? WHERE session_id = ? AND room_id = ?");
+        $stmt = $pdo->prepare("UPDATE users SET username = ?, room_id = ? WHERE session_id = ?");
         $stmt->execute([$username, $sessionId, $roomId]);
     } else {
         // Если нет, добавляем нового пользователя

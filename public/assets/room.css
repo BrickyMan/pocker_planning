@@ -47,27 +47,42 @@ header .header-options {
 }
 
 .invite-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: var(--secondary-color);
-    border-radius: 5px;
-    padding: 3px 10px;
-    cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.invite-wrapper input {
-    max-width: 150px;
-    background-color: var(--primary-color);
-    font-size: 1.1rem;
-    text-align: center;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
+.invite-wrapper p {
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-.invite-wrapper button {
+.invite-code {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--secondary-color);
+    border-radius: 7px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.invite-code input {
+    width: 150px;
+    background-color: var(--primary-color);
+    font-family: "Cascadia Mono", monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.invite-code button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,6 +92,52 @@ header .header-options {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
+}
+
+.invite-code button svg {
+    fill: #e3e3e3;
+    transition: all 0.2s ease;
+}
+
+.invite-code button svg:hover {
+    fill: white;
+}
+
+.invite-msg {
+    width: 200px;
+    height: 36px;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border-radius: 7px;
+    transition: all 0.2s ease;
+    top: 45px;
+    right: 0;
+    animation: fadeOut 2s forwards;
+    z-index: -1;
+}
+
+@keyframes fadeOut {
+    0% {
+        top: 0px;
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+        top: 45px;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 header .username-wrapper {
@@ -266,21 +327,21 @@ main {
 
 .rate-bar {
     display: flex;
-    gap: 25px;
+    /* gap: -45px; */
 }
 
 .rate-bar_btn {
-    width: 50px;
-    height: 80px;
+    width: 80px;
+    height: 130px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 1px 0px rgb(29, 29, 29);
-    background-color: transparent;
+    box-shadow: -3px 3px 3px rgb(29, 29, 29);
+    background-color: var(--primary-color);
     border: 1px solid var(--accent-color);
     border-radius: 10px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -288,15 +349,13 @@ main {
 
 .rate-bar_btn:hover {
     background-color: var(--secondary-color);
-    box-shadow: -8px 8px 4px rgba(29, 29, 29, 0.429);
-    transform: translateY(-10px);
+    box-shadow: -6px 6px 6px rgba(29, 29, 29);
 }
 
 .rate-bar_btn.active {
     background-color: var(--accent-color);
     color: var(--dark-primary-color);
-    box-shadow: -8px 8px 10px rgb(29, 29, 29);
-    transform: translateY(-10px);
+    box-shadow: -6px 6px 6px rgb(29, 29, 29);
 }
 
 .rate-bar_plus {

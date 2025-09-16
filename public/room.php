@@ -50,7 +50,9 @@ $currentUser = getUserData(session_id());
         const roomId = "<?php echo $roomData["id"]; ?>";
         const userData = <?php echo json_encode($currentUser); ?>;
     </script>
-    <script defer src="public/assets/js/room.js"></script>  
+    <script defer src="public/assets/js/room.js"></script>
+    <script defer src="public/assets/js/room_code.js"></script>
+    <script defer src="public/assets/js/room_rate.js"></script>
 </head>
 <body>
     <header>
@@ -60,12 +62,17 @@ $currentUser = getUserData(session_id());
         </a>
         <p class="logo">BriPocker</p>
         <div class="header-options">
-            <div class="invite-wrapper invite-code">
+            <div class="invite-wrapper">
                 <p>Код комнаты:</p>
-                <input type="text" value="<?php echo $roomCode; ?>" disabled>
-                <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
-                </button>
+                <div class="invite-code">
+                    <input type="text" id="roomCodeInput" value="<?php echo $roomCode; ?>" readonly disabled>
+                    <button id="copyRoomCodeBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
+                    </button>
+                </div>
+                <div class="invite-msg" id="inviteMsg">
+                    Скопировано!
+                </div>
             </div>
             <div class="username-wrapper">
                 <p><?php echo $_SESSION['username']; ?></p>
@@ -108,9 +115,6 @@ $currentUser = getUserData(session_id());
             </div>
             <div class="rate-bar_btn" data-value="13">
                 13<div class="rate-bar_plus">+</div>
-            </div>
-            <div class="rate-bar_btn" data-value="21">
-                21<div class="rate-bar_plus">+</div>
             </div>
         </div>
     </main>

@@ -19,6 +19,7 @@ function handleRateChoice(event) {
         user_id: userData.session_id,
         vote: value
     }));
+    placeCards();
     console.log('voted');
 }
 
