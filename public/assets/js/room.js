@@ -19,7 +19,6 @@ function handleRateChoice(event) {
         user_id: userData.session_id,
         vote: value
     }));
-    placeCards();
     console.log('voted');
 }
 
@@ -35,6 +34,7 @@ function resetChoice() {
     for (let i = 0; i < rateBtns.length; i++) {
         rateBtns[i].classList.remove("active");
     }
+    // placeCards();
 }
 
 // Подписка на клик кнопок выбора оценки

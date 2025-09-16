@@ -16,28 +16,29 @@ function getArcCoords(n, h) {
   return coords;
 }
 
-function placeCards() {
+function placeCards(firstLaunch = false) {
     const heights = getArcCoords(rateBtns.length, 40);
 
     rateBtns.forEach((button, i) => {
         const angle = -arc / 2 + i * step;
         const offset = heights[i];
         if (button.classList.contains('active')) {
-            console.log(button.classList.contains('active'));
             button.style.transform = `rotate(${angle}deg) translateY(-${offset + 20}px)`;
         } else {
             button.style.transform = `rotate(${angle}deg) translateY(-${offset}px)`;
         }
 
-        button.addEventListener('mouseenter', () => {
-            button.style.transform = `rotate(${angle}deg) translateY(-${offset + 20}px)`;
-        });
+        if (firstLaunch) {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = `rotate(${angle}deg) translateY(-${offset + 20}px)`;
+            });
 
-        button.addEventListener('mouseleave', () => {
-            if (button.classList.contains('active')) return;
-            button.style.transform = `rotate(${angle}deg) translateY(-${offset}px)`;
-        });
+            button.addEventListener('mouseleave', () => {
+                if (button.classList.contains('active')) return;
+                button.style.transform = `rotate(${angle}deg) translateY(-${offset}px)`;
+            });
+        }
     });
 }
 
-placeCards();
+placeCards(true);
