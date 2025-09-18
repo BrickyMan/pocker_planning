@@ -18,8 +18,9 @@ function handleRateChoice(event) {
         room_id: roomId,
         user_id: userData.session_id,
         vote: value
-    }));
-    console.log('voted');
+    }))
+    .then(() => {console.log('Voted successfully')})
+    .catch((error) => {console.error('Error voting:', error)});
 }
 
 function setRateChoice(value) {
@@ -34,7 +35,7 @@ function resetChoice() {
     for (let i = 0; i < rateBtns.length; i++) {
         rateBtns[i].classList.remove("active");
     }
-    // placeCards();
+    placeCards();
 }
 
 // Подписка на клик кнопок выбора оценки
