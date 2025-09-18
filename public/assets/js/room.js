@@ -10,9 +10,8 @@ const currentUserCard = document.querySelector(".user-card.current-user");
 function handleRateChoice(event) {
     if (rateBar.getAttribute("blocked") == "true") return;
     resetChoice();
-    event.target.classList.add("active").then(() => {
-        placeCards();
-    });
+    event.target.classList.add("active");
+    placeCards();
     
     let value = event.target.getAttribute("data-value");
     socket.send(JSON.stringify({
@@ -276,9 +275,8 @@ function restart(users) {
         actionCardBtn.removeAttribute("disabled");
     }, 1000);
     // Сброс выбранного голоса
-    resetChoice().then(() => {
-        placeCards();
-    });
+    resetChoice();
+    placeCards();
     rateBar.setAttribute("blocked", "false");
     // Сброс среднего голоса
     showAvergeVote(0.0);
