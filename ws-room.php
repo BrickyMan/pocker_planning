@@ -110,6 +110,11 @@ class RoomServer implements MessageComponentInterface {
                 'users' => getUsersInRoom($roomId)
             ]);
         }
+
+        // Если это ping - отвечаем pong
+        if ($data['type'] == 'ping') {
+            $from->send(json_encode(['type' => 'pong']));
+        }
     }
 
     public function onClose(ConnectionInterface $conn) {

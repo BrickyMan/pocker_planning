@@ -280,7 +280,14 @@ function restart(users) {
     showAvergeVote(0.0);
 }
 
+// Ping-pong для поддержки соединения
+setInterval(() => {
+    if (socket.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify({ type: 'ping' }));
+    }
+}, 30000);
 
+// Отправка сообщения при закрытии вкладки
 window.onbeforeunload = () => {
     socket.send(JSON.stringify({
         type: 'leave',
