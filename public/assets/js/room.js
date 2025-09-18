@@ -10,7 +10,9 @@ const currentUserCard = document.querySelector(".user-card.current-user");
 function handleRateChoice(event) {
     if (rateBar.getAttribute("blocked") == "true") return;
     resetChoice();
-    event.target.classList.add("active");
+    event.target.classList.add("active").then(() => {
+        placeCards();
+    });
     
     let value = event.target.getAttribute("data-value");
     socket.send(JSON.stringify({
@@ -35,7 +37,6 @@ function resetChoice() {
     for (let i = 0; i < rateBtns.length; i++) {
         rateBtns[i].classList.remove("active");
     }
-    placeCards();
 }
 
 // Подписка на клик кнопок выбора оценки
@@ -275,7 +276,9 @@ function restart(users) {
         actionCardBtn.removeAttribute("disabled");
     }, 1000);
     // Сброс выбранного голоса
-    resetChoice();
+    resetChoice().then(() => {
+        placeCards();
+    });
     rateBar.setAttribute("blocked", "false");
     // Сброс среднего голоса
     showAvergeVote(0.0);
